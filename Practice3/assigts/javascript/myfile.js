@@ -15,6 +15,8 @@ console.log("Tổng số chữ: ",totalWord)
 //Find the position of the word “newbie”.
 console.log("Vị Trí \"newbie\": ",aString.search("newbie"))
 
+//Cut a part of the string above to have the word “newbie”.
+console.log(aString.slice(aString.search("newbie"),aString.search("newbie")+6));
 
 //Replace word “programming” in the string above by the uppercase one.
 console.log(aString.replace("programming", "PROGRAMMING"));
