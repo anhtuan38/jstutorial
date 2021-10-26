@@ -1,70 +1,15 @@
-let aDay = prompt("Please input a number from 1 to 7")
+let index;
+do
+  index = prompt("Please input a number from 1 to 7")
+while (index < 1 || index > 7)
+let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-switch (aDay) {
-  case "1":
-    alert("Sunday");
-    break;
-  case "2":
-    alert("Monday");
-    break;
-  case "3":
-    alert("Tuesday");
-    break;
-  case "4":
-    alert("Wednesday");
-    break;
-  case "5":
-    alert("Thursday");
-    break;
-  case "6":
-    alert("Friday");
-    break;
-  case "7":
-    alert("Saturday");
-    break;
-  default:
-    alert("Please input a number from 1 to 7 !!!")
-}
+alert(day[index - 1]);
 
-let aMonth = prompt("Please input a number from 1 to 12")
-
-switch (aMonth) {
-  case "1":
-    alert("January");
-    break;
-  case "2":
-    alert("February");
-    break;
-  case "3":
-    alert("March");
-    break;
-  case "4":
-    alert("April");
-    break;
-  case "5":
-    alert("May");
-    break;
-  case "6":
-    alert("June");
-    break;
-  case "7":
-    alert("July");
-    break;
-  case "8":
-    alert("August");
-    break;
-  case "9":
-    alert("September");
-    break;
-  case "10":
-    alert("October");
-    break;
-  case "11":
-    alert("November");
-    break;
-  case "12":
-    alert("December");
-    break;
-  default:
-    alert("Please input a number from 1 to 12 !!!")
-}
+// Month
+let index2;
+let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+do
+  index2 = prompt("Please input a number from 1 to 12")
+while (index2 < 1 || index2 > 12)
+alert(month[index2 - 1]);
