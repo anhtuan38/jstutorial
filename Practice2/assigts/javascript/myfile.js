@@ -1,6 +1,5 @@
 let arrayNumber = [1, 50,  28,  2, 5, 103, 496, 105, 108, 25, 36, 6, 50, 53, 289, 1003, 472, 105, 3, 899, 692, 1000, 289, 103];
 let newArray = [];
-let element;
 for (let element of arrayNumber) {
   if (newArray.indexOf(element) === -1) {
     newArray.push(element)
