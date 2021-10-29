@@ -1,10 +1,10 @@
-// let index;
-// do
-//   index = prompt("Please input a number from 1 to 7")
-// while (index < 1 || index > 7)
-// let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+let index;
+do
+  index = prompt("Please input a number from 1 to 7")
+while (index < 1 || index > 7)
+let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-// alert(day[index - 1]);
+alert(day[index - 1]);
 
 // Month
 let index2;
