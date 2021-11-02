@@ -1,45 +1,80 @@
+const $ = (value) => {
+  return document.getElementById(value);
+};
 
+const getByName = (value) => {
+  return document.getElementsByName(value);
+};
+
+// Validate Email
 function validateEmail() {
-  let x = document.forms["myForm"]["email"].value;
-  console.log(x);
-  if (x === "") {
-    document.getElementById("errorEmail").innerHTML="Please enter the correct email address"
-  }
+  let emailInput = $("email");
+  let MsgEmail = $("MsgEmail");
+  if (emailInput.value.indexOf("@") === -1) {
+    MsgEmail.innerHTML =
+      "<span class='text-danger'>Your EMAIL is invalid !!!</span>";
+  } else MsgEmail.innerHTML = "<span class='text-success'>Correct</span>";
 }
 
-function validateNumber() {
-  let x = document.forms["myForm"]["phoneNumber"].value;
-  if (x === "") {
-    document.getElementById("errorPhone").innerHTML="The field is requied"
-  }
+// Validate Phone
+function validatePhone() {
+  let phoneNumber = $("phoneNumber");
+  let MsgPhone = $("MsgPhone");
+  let regularExpressionPatten =
+    /^([\(][\+][0-9]{2}[\)])?([0-9]{3,4})-([0-9]{3})-([0-9]{3})$/;
+  if (regularExpressionPatten.test(phoneNumber.value)) {
+    MsgPhone.innerHTML = "<span class='text-success'>Correct</span>";
+  } else
+    MsgPhone.innerHTML =
+      "<span class='text-danger'>Please enter the correct phone number<span>";
 }
+
+// Validate Country
 
 function validateCountry() {
-  let x = document.forms["myForm"]["inputGroupSelect01"].value;
-  if (x === "Select an option") {
-    document.getElementById("errorCountry").innerHTML="Please select a contry"
+  let countrySelect = $("country");
+  if (country.value === "0") {
+    $("MsgCountry").innerHTML =
+      "<span class='text-danger'>Please select a country<span>";
   }
 }
 
+// Validate Contact
 function validateContact() {
-  let x = document.forms["myForm"]["contact"].value;
-  if (x === "") {
-    document.getElementById("errorContact").innerHTML="Please select 1 of 3"
-  }
+  let contactRadioGroup = getByName("contact");
+  MsgContact = $("MsgContact");
+  contactRadioGroup.forEach((element) => {
+    if (element.checked) {
+      MsgContact.innerHTML = `<span class='text-success'>Contact by ${element.value}</span>`;
+    }
+  });
 }
 
-function validateCheckbox() {
-  let x = document.forms["myForm"]["flexCheckDefault"].checked;
-  if (!x) {
-    document.getElementById("errorAccept").innerHTML="This box must be checked"
-  }
-}
+// Listenning event from Accept checkbox
 
-function validateForm()
-{
+const acceptCheckbox = $("acceptCheckbox");
+acceptCheckbox.addEventListener("click", () => {
+  if (acceptCheckbox.checked) {
+    $("registerBtn").removeAttribute("disabled");
+  }
+  if (!acceptCheckbox.checked) {
+    $("registerBtn").setAttribute("disabled", "");
+  }
+});
+
+// Listenning event from reset button
+const resetBtn = $("resetBtn");
+resetBtn.addEventListener("click", () => {
+  $("myForm").reset();
+  $("MsgEmail").innerHTML = "";
+  $("MsgPhone").innerHTML = "";
+  $("MsgCountry").innerHTML = "";
+  $("MsgContact").innerHTML = "";
+});
+//click button register
+function validateForm() {
   validateEmail();
-  validateNumber();
+  validatePhone();
   validateCountry();
   validateContact();
-  validateCheckbox();
 }

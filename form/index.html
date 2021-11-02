@@ -14,64 +14,72 @@
 
 <body>
   <div class="container">
-    <h1 class="pt-5" id="h1">Register</h1>
-    <form action="#!" name="myForm">
+    <h1 class="pt-5">Register</h1>
+    <form action="#!" id="myForm">
+      <!-- Email -->
       <div class="form-group row my-3">
         <label for="email" class="col-sm-2 col-form-label">Email:</label>
         <div class="col-sm-5">
           <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
         </div>
-        <p class="col-sm-5 d-flex align-items-center" id="errorEmail"></p>
+        <div class="col-sm-5 d-flex align-items-center" id="MsgEmail"></div>
       </div>
-
+      <!-- Mobile Phone Number -->
       <div class="form-group row my-3">
         <label for="phoneNumber" class="col-sm-2 col-form-label">Mobile Phone:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="phoneNumber" autofocus name="phoneNumber">
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Ex: (+84)123.456.789 or 0123.456.789">
         </div>
-        <p class="col-sm-5 d-flex align-items-center" id="errorPhone"></p>
+        <div class="col-sm-5 d-flex align-items-center" id="MsgPhone"></div>
       </div>
+      <!-- Select Country -->
       <div class="form-group row my-3">
         <label for="country" class="col-sm-2 col-form-label">Country:</label>
         <div class="col-sm-5">
-          <select class="form-select col-4" id="inputGroupSelect01">
-            <option name="0" selected>Select an option</option>
-            <option name="1">Hà Nội</option>
-            <option name="2">Đà Nẵng</option>
-            <option name="3">Tp. Hồ Chí Minh</option>
+          <select class="form-select col-4" id="country">
+            <option value="0" selected>Select an option</option>
+            <option value="1">VietNam</option>
+            <option value="2">Philippines</option>
+            <option value="3">China</option>
           </select>
         </div>
-        <p class="col-sm-5 d-flex align-items-center" id="errorCountry"></p>
+        <div class="col-sm-5 d-flex align-items-center" id="MsgCountry"></div>
       </div>
+      <!-- Contact me -->
       <div class="form-group row my-3 d-flex align-items-center">
-        <label for="contact" class="col-sm-2 col-form-label">Contact me by:</label>
+        <label class="col-sm-2 col-form-label">Contact me by:</label>
         <div class="col-sm-3">
-          <input type="radio" name="contact" id="text">
-          <label for="contact">Text</label>
-          <input type="radio" name="contact" id="email">
-          <label for="contact">Email</label>
-          <input type="radio" name="contact" id="dontContact">
-          <label for="contact">Don't contact me</label>
+          <input type="radio" name="contact" id="text" value="Text" checked>
+          <label for="textRadio">Text</label>
+          <input type="radio" name="contact" id="email"  value="Email">
+          <label for="emailRadio">Email</label>
+          <input type="radio" name="contact" id="dontContact" value="Don't contact me">
+          <label for="dontContactMeRadio">Don't contact me</label>
         </div>
-        <p class="col-sm-5 d-flex align-items-center" id="errorContact"></p>
+        <div class="col-sm-5 d-flex align-items-center" id="MsgContact"></div>
       </div>
+      <!-- Term of Service -->
       <div class="form-group row">
         <label class="form-check-label col-sm-2" for="flexCheckDefault">
           Term of Service
         </label>
         <div class="form-group col-1">
-          <input class="form-check-input" type="checkbox" value="" name="check" id="flexCheckDefault">
+          <input class="form-check-input" type="checkbox" value="" name="check" id="acceptCheckbox">
           <label class="form-check-label" for="flexCheckDefault">
             I accept
           </label>
         </div>
-        <p class="col-sm-5 d-flex align-items-center" id="errorAccept"></p>
       </div>
+      <!-- button -->
+      <div class="mt-3 row">
+        <div class="col-sm-6">
+          <button type="button" onclick="validateForm()" id="registerBtn" disabled>Submit</button>
+        </div>
 
+        <div class="col-sm-6">
+          <button type="button" id="resetBtn">Reset</button>
+        </div>
 
-      <div class="form-group p-3 row">
-        <input type="submit" class="col-3" value="Submit" onclick="validateForm()">
-        <input type="reset" class="col-3 mx-3" value="Reset">
       </div>
     </form>
   </div>
