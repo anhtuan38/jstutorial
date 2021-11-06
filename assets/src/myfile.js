@@ -130,6 +130,8 @@ const resetBtn = () => {
   $("myForm").reset();
   $("msgFullName").innerHTML = "";
   $("msgEmail").innerHTML = "";
+  $("showAge").innerHTML = "18";
+  $("msgAge").innerHTML = "";
   $("msgFavorite").innerHTML = "";
   $("msgYourWish").innerHTML = "";
 };
