@@ -1,7 +1,3 @@
-const $ = (value) => {
-  return document.getElementById(value);
-};
-
 const headers = [
   "stt",
   "full name",
@@ -12,28 +8,6 @@ const headers = [
   " health status",
   "actions",
 ];
-// const Person = {
-//   fullName: "Anh Tuan",
-//   age: "22",
-//   email: "tuanphan@gmail.com",
-//   gender: "male",
-//   height: "1.55",
-//   weight: "54",
-//   address: "da nang",
-//   calculateBMI: function () {
-//     let BMI = this.weight / Math.pow(this.height, 2);
-//     return BMI;
-//   },
-//   guessHealth: function () {
-//     const BMI = this.calculateBMI();
-//     if (BMI < 18.5) {
-//       return "underweight";
-//     } else if (BMI >= 18.5 && BMI <= 24.9) {
-//       return "normal weight";
-//     } else if (BMI >= 25 && BMI <= 29.9) return "overweight";
-//     else return "obesity";
-//   },
-// };
 
 function Person(fullName, age, email, gender, height, weight, address) {
   this.fullName = fullName;
@@ -49,17 +23,76 @@ function Person(fullName, age, email, gender, height, weight, address) {
   };
   this.guessHealth = () => {
     const BMI = this.calculateBMI();
-    if (BMI < 18.5) {
-      return "underweight";
-    } else if (BMI >= 18.5 && BMI <= 24.9) {
-      return "normal weight";
-    } else if (BMI >= 25 && BMI <= 29.9) return "overweight";
-    else return "obesity";
+    if (BMI < 18.5) return "underweight";
+    if (BMI >= 18.5 && BMI <= 24.9) return "normal weight";
+    if (BMI >= 25 && BMI <= 29.9) return "overweight";
+    return "obesity";
   };
 }
 
-const person1 = new Person("tuan", 22, "tuanphan", "male", 1.6, 54, "abc");
-const person2 = new Person("thai", 25, "pppaphan", "male", 1.6, 52, "abccdf");
+const person1 = new Person(
+  "tuan",
+  22,
+  "tuanphan@gmail.com",
+  "male",
+  1.6,
+  54,
+  "abccxc"
+);
+const person2 = new Person(
+  "thai",
+  25,
+  "thai@gmail.com",
+  "male",
+  1.7,
+  62,
+  "abccdfxcv"
+);
+const person3 = new Person(
+  "chinh",
+  25,
+  "chinhtu@gmail.com",
+  "male",
+  1.6,
+  52,
+  "abccdfqe"
+);
+const person4 = new Person(
+  "tuan2",
+  25,
+  "tuanphan2@gmail.com",
+  "male",
+  1.6,
+  52,
+  "abccdfqư"
+);
+const person5 = new Person(
+  "tuan4",
+  25,
+  "pppaphan@gmail.com",
+  "male",
+  1.6,
+  52,
+  "abccdfq"
+);
+const person6 = new Person(
+  "thai5",
+  25,
+  "pppaphan@gmail.com",
+  "male",
+  1.6,
+  52,
+  "abccdfz"
+);
+const person7 = new Person(
+  "tha6",
+  25,
+  "pppaphan@gmail.com",
+  "male",
+  1.6,
+  52,
+  "abccdfcx"
+);
 
 const persons = [];
 persons.push(
@@ -72,6 +105,31 @@ persons.push(
     ...person2,
     calculateBMI: person2.calculateBMI(),
     guessHealth: person2.guessHealth(),
+  },
+  {
+    ...person3,
+    calculateBMI: person3.calculateBMI(),
+    guessHealth: person3.guessHealth(),
+  },
+  {
+    ...person4,
+    calculateBMI: person4.calculateBMI(),
+    guessHealth: person4.guessHealth(),
+  },
+  {
+    ...person5,
+    calculateBMI: person5.calculateBMI(),
+    guessHealth: person5.guessHealth(),
+  },
+  {
+    ...person6,
+    calculateBMI: person6.calculateBMI(),
+    guessHealth: person6.guessHealth(),
+  },
+  {
+    ...person7,
+    calculateBMI: person7.calculateBMI(),
+    guessHealth: person7.guessHealth(),
   }
 );
 console.log(persons);
