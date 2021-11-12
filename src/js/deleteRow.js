@@ -2,6 +2,7 @@
 const confirmDelete = (index) => {
   const isDel = confirm("Do you want to delete this row?");
   if (isDel) {
-    $("index").remove();
+    const indexRowDel = $(`row${index}`);
+    indexRowDel.remove();
   }
 };
