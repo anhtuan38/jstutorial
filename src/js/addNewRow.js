@@ -4,6 +4,7 @@ $("addNewRow").addEventListener("click", () => {
   const emailVal = $("email").value;
   const heightVal = $("height").value;
   const weightVal = $("weight").value;
+  const addressVal = $("address").value;
 
   // gender value
   const genderName = getByName("gender");
@@ -21,12 +22,13 @@ $("addNewRow").addEventListener("click", () => {
     emailVal,
     genderVal,
     heightVal,
-    weightVal
+    weightVal,
+    addressVal
   );
 
   personArr.push(newPerson);
 
-  let newpersons = personArr.map((obj) => {
+  personArr.map((obj) => {
     obj.BMI = obj.calculateBMI().toFixed(2);
     obj.health = obj.guessHealth();
     return obj;
