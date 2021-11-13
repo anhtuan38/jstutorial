@@ -26,7 +26,7 @@ $("addNewRow").addEventListener("click", () => {
 
   personArr.push(newPerson);
 
-  const newpersons = personArr.map((obj) => {
+  let newpersons = personArr.map((obj) => {
     obj.BMI = obj.calculateBMI().toFixed(2);
     obj.health = obj.guessHealth();
     return obj;
