@@ -7,7 +7,7 @@ const validateFullName = (e) => {
   if (!fullname) {
     msgFullName.innerHTML =
       '<span class="text-danger">This field is required.</span>';
-    return false;
+    return;
   }
 
   if (fullname.indexOf(" ") === -1) {
@@ -98,6 +98,7 @@ window.onload = () => {
 
   // listener Event
   fullname.onblur = (event) => validateFullName(event);
+  // console.log(validateFullName());
   email.onblur = (event) => validateEmail(event);
   height.onblur = (event) => validateHeight(event);
   weight.onblur = (event) => validateWeight(event);
