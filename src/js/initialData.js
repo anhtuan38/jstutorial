@@ -23,7 +23,7 @@ function Person(fullName, age, email, gender, height, weight, address) {
 }
 
 const personArr = [];
-const limit = 3;
+const limit = 5;
 const names = ["tuan", "huy", "chinh", "anh", "tu", "quang", "duc", "thai"];
 const ages = [12, 15, 18, 19, 20, 22, 25, 28, 29, 35];
 const mails = [
@@ -49,10 +49,10 @@ for (let count = 0; count < limit; count++) {
   personArr.push(person);
 }
 
-const persons = personArr.map((obj) => {
+personArr.map((obj) => {
   obj.BMI = obj.calculateBMI().toFixed(2);
   obj.health = obj.guessHealth();
   return obj;
 });
 
-// console.log(persons);
+// console.log(personArr);
