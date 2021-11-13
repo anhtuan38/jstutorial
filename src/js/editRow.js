@@ -1,11 +1,8 @@
 // function delete Row
 const editRow = (index) => {
-  const indexRow = $(`editRow${index}`);
-  const indexFormEdit = $("EditForm");
-
   //fullname
   const fullNameEdit = $("fullNameEdit");
-  const nameEditMsg = $("msgFullNameEdit");
+  // const nameEditMsg = $("msgFullNameEdit");
   //age
   const ageEdit = $("ageEdit");
   // gender
@@ -13,13 +10,15 @@ const editRow = (index) => {
 
   //email
   const emailEdit = $("emailEdit");
-  const emailEditMsg = $("msgEmailEdit");
+  // const emailEditMsg = $("msgEmailEdit");
   // height
   const heightEdit = $("heightEdit");
-  const heighEditMsg = $("msgHeightEdit");
+  // const heighEditMsg = $("msgHeightEdit");
   //weight
   const weightEdit = $("weightEdit");
-  const weightEditMsg = $("msgWeightEdit");
+  // const weightEditMsg = $("msgWeightEdit");
+  // address
+  const addressEdit = $("addressEdit");
 
   if (personArr[index - 1].gender === "male") {
     $("maleEdit").checked = true;
@@ -36,11 +35,12 @@ const editRow = (index) => {
   emailEdit.value = personArr[index - 1].email;
   heightEdit.value = personArr[index - 1].height;
   weightEdit.value = personArr[index - 1].weight;
+  addressEdit.value = personArr[index - 1].address;
 
-  $("saveBtn").setAttribute("onclick", `saveChanges(${index})`);
+  $("saveBtn").setAttribute("onclick", `save(${index})`);
 };
 
-const saveChanges = (index) => {
+const save = (index) => {
   const genderEdit = getByName("genderEdit");
   let gender = "";
   genderEdit.forEach((element) => {
@@ -57,7 +57,8 @@ const saveChanges = (index) => {
     emailEdit.value,
     gender,
     heightEdit.value,
-    weightEdit.value
+    weightEdit.value,
+    addressEdit.value
   );
 
   personArr.splice(index - 1, 1, personEdit);
