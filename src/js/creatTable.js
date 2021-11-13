@@ -21,6 +21,8 @@ const headers = [
 const creatButton = (name) => {
   const btn = document.createElement("button");
   btn.setAttribute("type", "button");
+  btn.setAttribute("data-bs-toggle", "modal");
+  btn.setAttribute("data-bs-target", `#${name}`);
   btn.innerHTML = name;
   return btn;
 };
@@ -59,8 +61,10 @@ const creatTableBody = (array) => {
 
     //creat button
     const editBtn = creatButton("edit");
+    editBtn.setAttribute("onclick", `editRow(${index + 1})`);
+
     const deleteBtn = creatButton("delete");
-    deleteBtn.setAttribute("onclick", `confirmDelete(${index + 1})`);
+    deleteBtn.setAttribute("onclick", `confirmDelRow(${index + 1})`);
 
     //set data for cell
     sttTd.innerHTML = index + 1;
