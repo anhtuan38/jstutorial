@@ -15,14 +15,14 @@
     <div class="container">
         <!-- search Data -->
         <div class="input-group row mb-3">
-            <input type="search" class="form-control col-1" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon" />
-            <select class="form-select col-2" aria-label="Default select example">
-                <option value="1" selected>One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <input type="search" class="form-control col-1" id="textSearchInput" placeholder="Search"
+                aria-label="Search" aria-describedby="search-addon" />
+            <select class="form-select col-2" id="optionSearch">
+                <option selected value="fullName">Fullname</option>
+                <option value="email">Email</option>
+                <option value="BMI">BMI</option>
             </select>
-            <button type="button" class="btn btn-outline-primary col-2" id="search">Search</button>
+            <button type="button" class="btn btn-outline-primary col-2" onclick="searchPerson()">Search</button>
         </div>
 
         <!-- Draw Table -->
@@ -207,6 +207,7 @@
     <script src="./src/js/addNewRow.js"></script>
     <script src="./src/js/deleteRow.js"></script>
     <script src="./src/js/editRow.js"></script>
+    <script src="./src/js/searchPerson.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
