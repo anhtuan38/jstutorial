@@ -9,7 +9,7 @@ function Person(fullName, age, email, gender, height, weight, address) {
   this.gender = gender;
   this.height = height;
   this.weight = weight;
-  // this.address = address;
+  this.address = address;
   this.calculateBMI = () => {
     return this.weight / Math.pow(this.height, 2);
   };
@@ -36,6 +36,16 @@ const mails = [
 const genders = ["male", "female", "other"];
 const height = [1.44, 1.55, 1.66, 1.585, 1.628];
 const weight = [55, 62, 50.6, 70, 46];
+const address = [
+  "thôn 1",
+  "thôn 2",
+  "thôn 3",
+  "thôn 4",
+  "thôn 5",
+  "thôn 6",
+  "thôn 7",
+  "thôn 8",
+];
 
 for (let count = 0; count < limit; count++) {
   const person = new Person(
@@ -44,7 +54,8 @@ for (let count = 0; count < limit; count++) {
     mails[randomInt(0, 3)],
     genders[randomInt(0, 2)],
     height[randomInt(0, 4)],
-    weight[randomInt(0, 4)]
+    weight[randomInt(0, 4)],
+    address[randomInt(0, 7)]
   );
   personArr.push(person);
 }
@@ -55,4 +66,4 @@ personArr.map((obj) => {
   return obj;
 });
 
-// console.log(personArr);
+console.log(personArr);
