@@ -1,5 +1,6 @@
 // function delete Row
 const confirmDelRow = (index) => {
+
   const isDel = confirm("Do you want to delete this row?");
   if (isDel) {
     const indexRowDel = $(`row${index}`);
