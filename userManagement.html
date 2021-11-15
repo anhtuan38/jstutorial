@@ -8,22 +8,33 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <!-- search Data -->
-        <div class="input-group row mb-3">
-            <input type="search" class="form-control col-1" id="textSearchInput" placeholder="Search"
-                aria-label="Search" aria-describedby="search-addon" />
-            <select class="form-select col-2" id="optionSearch">
-                <option selected value="fullName">Fullname</option>
-                <option value="email">Email</option>
-                <option value="BMI">BMI</option>
-            </select>
-            <button type="button" class="btn btn-outline-primary col-2" onclick="searchPerson()">Search</button>
+        <section class="row">
+            <div class="input-group col-6 mb-3 w-25">
+                <input type="search" class="form-control" id="textSearchInput" placeholder="Search"
+                    aria-label="Search" aria-describedby="search-addon" />
+                <select class="form-select" id="optionSearch">
+                    <option selected value="fullName">Fullname</option>
+                    <option value="email">Email</option>
+                    <option value="BMI">BMI</option>
+                </select>
+                <button type="button" class="btn btn-outline-primary col-2" onclick="searchPerson()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- notification -->
+        <div class="col-6" id="msgSearch">
+
         </div>
+
 
         <!-- Draw Table -->
         <div id="data">
@@ -38,7 +49,7 @@
                         class="text-danger">*</span></label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" id="fullName" name="fullName"
-                        placeholder="Enter your Full Name">
+                        placeholder="Enter your Full Name" onblur="validateFullName()">
                 </div>
                 <div class="col-sm-5" id="msgFullName"></div>
             </div>
@@ -49,7 +60,6 @@
                 <div class="col-sm-1">
                     <input type="number" id="age">
                 </div>
-                <div class="col-sm-3" id="msgAge"></div>
             </div>
 
             <!-- Email -->
@@ -72,14 +82,13 @@
                     <input type="radio" name="gender" value="other" id="other">
                     <label for="otherRadio">Other</label>
                 </div>
-                <div class="col-sm-5" id="MsgGender"></div>
             </div>
 
             <!-- height -->
             <div class="form-group row my-3">
                 <label class="col-sm-2 col-form-label">Height(Meter):<span class="text-danger">*</span></label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="height" name="height" placeholder="a.bc">
+                    <input type="text" class="form-control" id="height" name="height" placeholder="a.bc" >
                 </div>
                 <div class="col-sm-5" id="msgHeight"></div>
             </div>
@@ -123,17 +132,17 @@
                             <!-- Full name -->
                             <div class="form-group row my-3">
                                 <label class="col-3 col-form-label">Full Name:<span class="text-danger">*</span></label>
-                                <div class="col-sm-7">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="fullNameEdit" name="fullNameEdit"
                                         placeholder="Enter your Full Name">
                                 </div>
-                                <div class="col-sm-2" id="msgFullNameEdit"></div>
+                                <div class="col-sm-4" id="msgFullNameEdit"></div>
                             </div>
 
                             <!-- Age -->
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label d-flex align-items-center">Age:</label>
-                                <div class="col-sm-1">
+                                <div class="col-sm-1 w-25">
                                     <input type="number" id="ageEdit">
                                 </div>
                             </div>
@@ -141,11 +150,11 @@
                             <!-- Email -->
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label">Email:<span class="text-danger">*</span></label>
-                                <div class="col-sm-7">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="emailEdit" name="emailEdit"
                                         placeholder="Enter your email">
                                 </div>
-                                <div class="col-sm-2" id="msgEmailEdit"></div>
+                                <div class="col-sm-4" id="msgEmailEdit"></div>
                             </div>
 
                             <!-- Gender -->
@@ -201,25 +210,26 @@
         </div>
 
         <!-- Modal delete button -->
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="exampleModalLabel">Warning</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you want to delete this row?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" id="agreeToDel" data-bs-dismiss="modal">Yes</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button type="button" class="btn btn-primary" id="agreeDeleteItem">Yes</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
     </div>
     <script src="./src/js/initialData.js"></script>
     <!-- <script src="./src/js/nameSpace.js"></script> -->
