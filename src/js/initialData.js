@@ -1,6 +1,9 @@
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+const randomFloat = (min, max, fixed) => {
+  return (Math.random() * (max - min) + min).toFixed(fixed);
+};
 
 function Person(fullName, age, email, gender, height, weight, address) {
   this.fullName = fullName;
@@ -21,41 +24,20 @@ function Person(fullName, age, email, gender, height, weight, address) {
     return "obesity";
   };
 }
-
 const personArr = [];
-const limit = 5;
+const limit = 10;
 const names = ["tuan", "huy", "chinh", "anh", "tu", "quang", "duc", "thai"];
-const ages = [12, 15, 18, 19, 20, 22, 25, 28, 29, 35];
-const mails = [
-  "abc@gmail.com",
-  "def@gmaiil.com",
-  "ghm@gmail.com",
-  "jol@gmail.com",
-  "xyz@gmail.com",
-];
 const genders = ["male", "female", "other"];
-const height = [1.44, 1.55, 1.66, 1.585, 1.628];
-const weight = [55, 62, 50.6, 70, 46];
-const address = [
-  "thôn 1",
-  "thôn 2",
-  "thôn 3",
-  "thôn 4",
-  "thôn 5",
-  "thôn 6",
-  "thôn 7",
-  "thôn 8",
-];
 
 for (let count = 0; count < limit; count++) {
   const person = new Person(
     names[randomInt(0, 7)],
-    ages[randomInt(0, 9)],
-    mails[randomInt(0, 3)],
+    randomInt(15, 80),
+    `mail_${randomInt(1000, 9999)}@gmail.com`,
     genders[randomInt(0, 2)],
-    height[randomInt(0, 4)],
-    weight[randomInt(0, 4)],
-    address[randomInt(0, 7)]
+    randomFloat(1, 2.5, 2),
+    randomFloat(30, 100, 1),
+    `thôn ${randomInt(1, 9)}`
   );
   personArr.push(person);
 }
@@ -65,5 +47,3 @@ personArr.map((obj) => {
   obj.health = obj.guessHealth();
   return obj;
 });
-
-console.log(personArr);
