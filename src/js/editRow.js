@@ -2,21 +2,23 @@
 const editRow = (index) => {
   //fullname
   const fullNameEdit = $("fullNameEdit");
-  // const nameEditMsg = $("msgFullNameEdit");
+  const nameEditMsg = $("msgFullNameEdit");
+
   //age
   const ageEdit = $("ageEdit");
-  // gender
-  // const genderRadio = $('')
 
   //email
   const emailEdit = $("emailEdit");
-  // const emailEditMsg = $("msgEmailEdit");
+  const emailEditMsg = $("msgEmailEdit");
+
   // height
   const heightEdit = $("heightEdit");
-  // const heighEditMsg = $("msgHeightEdit");
+  const heighEditMsg = $("msgHeightEdit");
+
   //weight
   const weightEdit = $("weightEdit");
-  // const weightEditMsg = $("msgWeightEdit");
+  const weightEditMsg = $("msgWeightEdit");
+
   // address
   const addressEdit = $("addressEdit");
 
@@ -37,42 +39,49 @@ const editRow = (index) => {
   weightEdit.value = personArr[index - 1].weight;
   addressEdit.value = personArr[index - 1].address;
 
+  fullNameEdit.onblur = (event) => validateFullName(event, nameEditMsg);
+  emailEdit.onblur = (event) => validateEmail(event, emailEditMsg);
+  heightEdit.onblur = (event) => validateHeight(event, heighEditMsg);
+  weightEdit.onblur = (event) => validateWeight(event, weightEditMsg);
+
   $("saveBtn").setAttribute("onclick", `save(${index})`);
 };
 
 const save = (index) => {
-  const genderEdit = getByName("genderEdit");
-  let gender = "";
-  genderEdit.forEach((element) => {
-    if (element.checked) {
-      gender = element.value;
-    }
-    return gender;
-  });
-  // remove edited element from array
+  if (CheckFullName && CheckEmail && CheckHeight && CheckWeight) {
+    const genderEdit = getByName("genderEdit");
+    let gender = "";
+    genderEdit.forEach((element) => {
+      if (element.checked) {
+        gender = element.value;
+      }
+      return gender;
+    });
+    // remove edited element from array
 
-  const personEdit = new Person(
-    fullNameEdit.value,
-    ageEdit.value,
-    emailEdit.value,
-    gender,
-    heightEdit.value,
-    weightEdit.value,
-    addressEdit.value
-  );
+    const personEdit = new Person(
+      fullNameEdit.value,
+      ageEdit.value,
+      emailEdit.value,
+      gender,
+      heightEdit.value,
+      weightEdit.value,
+      addressEdit.value
+    );
 
-  personArr.splice(index - 1, 1, personEdit);
+    personArr.splice(index - 1, 1, personEdit);
 
-  personArr.map((obj) => {
-    obj.BMI = obj.calculateBMI().toFixed(2);
-    obj.health = obj.guessHealth();
-    return obj;
-  });
+    personArr.map((obj) => {
+      obj.BMI = obj.calculateBMI().toFixed(2);
+      obj.health = obj.guessHealth();
+      return obj;
+    });
 
-  // console.log(personEdit);
+    // console.log(personEdit);
 
-  // Draw new table with edited element
-  $("tableData").remove();
-  const newTable = createTable(personArr);
-  $("data").append(newTable);
+    // Draw new table with edited element
+    $("tableData").remove();
+    const newTable = createTable(personArr);
+    $("data").append(newTable);
+  }
 };
