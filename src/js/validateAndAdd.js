@@ -1,105 +1,123 @@
+let CheckFullName = false;
+let CheckEmail = false;
+let CheckHeight = false;
+let CheckWeight = false;
 // validate Full Name
-const validateFullName = (e) => {
-  const fullname = e.target.value;
-  const msgFullName = $("msgFullName");
+const validateFullName = (e, indexMsg) => {
+  const fullNameVal = e.target.value;
   const regExpPattenFullName = /^[a-z]+([\s]?[a-z]+)*$/gim;
+  CheckFullName = false;
 
-  if (!fullname) {
-    msgFullName.innerHTML =
+  if (!fullNameVal) {
+    indexMsg.innerHTML =
       '<span class="text-danger">This field is required.</span>';
-    return;
+    return false;
   }
 
-  if (fullname.indexOf(" ") === -1) {
-    msgFullName.innerHTML =
+  if (fullNameVal.indexOf(" ") === -1) {
+    indexMsg.innerHTML =
       '<span class="text-danger">Full Name must contain at least 2 words</span>';
     return false;
   }
 
-  if (!regExpPattenFullName.test(fullname)) {
-    msgFullName.innerHTML =
+  if (!regExpPattenFullName.test(fullNameVal)) {
+    indexMsg.innerHTML =
       '<span class="text-danger">Only include the alphabetical characters in range: a-z and A-Z</span>';
     return false;
   }
 
-  msgFullName.innerHTML = '<span class="text-success">Good job!</span>';
-  return true;
+  indexMsg.innerHTML = '<span class="text-success">Good job!</span>';
+  CheckFullName = true;
 };
 
 // validate Email
-const validateEmail = (e) => {
-  const msgEmail = $("msgEmail");
-  const email = e.target.value;
+const validateEmail = (e, indexMsg) => {
+  const emailVal = e.target.value;
+  CheckEmail = false;
 
-  if (!email) {
-    msgEmail.innerHTML =
+  if (!emailVal) {
+    indexMsg.innerHTML =
       '<span class="text-danger">This field is required.</span>';
     return false;
   }
 
   if (
-    email.indexOf("@") === -1 ||
-    email[0] === "@" ||
-    email[email.length - 1] === "@"
+    emailVal.indexOf("@") === -1 ||
+    emailVal[0] === "@" ||
+    emailVal[emailVal.length - 1] === "@"
   ) {
-    msgEmail.innerHTML =
+    indexMsg.innerHTML =
       '<span class="text-danger">Your email is invalid. Please correct your email.</span>';
     return false;
   }
 
-  msgEmail.innerHTML = '<span class="text-success">Good job!</span>';
-  return true;
+  indexMsg.innerHTML = '<span class="text-success">Good job!</span>';
+  CheckEmail = true;
 };
 
-const validateHeight = (e) => {
-  const height = e.target.value;
-  const msgHeight = $("msgHeight");
+//validate Height
+const validateHeight = (e, indexMsg) => {
+  const heightVal = e.target.value;
+  CheckHeight = false;
 
-  //validate Height
-  if (isNaN(height)) {
-    msgHeight.innerHTML =
+  if (!heightVal) {
+    indexMsg.innerHTML =
+      '<span class="text-danger">This field is required.</span>';
+    return false;
+  }
+
+  if (isNaN(heightVal)) {
+    indexMsg.innerHTML =
       '<span class="text-danger">Only input float number</span>';
     return false;
   }
 
-  msgHeight.innerHTML = `<span class = 'text-success'>Good job!</span>`;
-  e.target.value = parseFloat(height).toFixed(2);
-  return true;
+  indexMsg.innerHTML = `<span class = 'text-success'>Good job!</span>`;
+  e.target.value = parseFloat(heightVal).toFixed(2);
+  CheckHeight = true;
 };
 
-const validateWeight = (e) => {
-  const weight = e.target.value;
-  const msgWeight = $("msgWeight");
+//validate Weight
+const validateWeight = (e, indexMsg) => {
+  const weightVal = e.target.value;
+  CheckWeight = false;
 
-  //validate Weight
-  if (isNaN(weight)) {
-    msgWeight.innerHTML =
+  if (!weightVal) {
+    indexMsg.innerHTML =
+      '<span class="text-danger">This field is required.</span>';
+    return false;
+  }
+  if (isNaN(weightVal)) {
+    indexMsg.innerHTML =
       '<span class="text-danger">Only input float number</span>';
     return false;
   }
   // $("height").innerHTML = height.toFix(2);
-  msgWeight.innerHTML = `<span class = 'text-success'>Good job!</span>`;
-  e.target.value = parseFloat(weight).toFixed(1);
-  return true;
+  indexMsg.innerHTML = `<span class = 'text-success'>Good job!</span>`;
+  e.target.value = parseFloat(weightVal).toFixed(1);
+  CheckWeight = true;
 };
 
-// listener for event windown onload
 window.onload = () => {
-  //set Attribute when load windown
   $("age").setAttribute("value", "18");
   $("male").setAttribute("checked", "");
   $("fullName").setAttribute("maxlength", "50");
   $("address").setAttribute("maxlength", "100");
 
-  const fullname = $("fullName");
-  const email = $("email");
-  const height = $("height");
-  const weight = $("weight");
+  const fullNameInput = $("fullName");
+  const indexMsgfullName = $("msgFullName");
 
-  // listener Event
-  fullname.onblur = (event) => validateFullName(event);
-  // console.log(validateFullName());
-  email.onblur = (event) => validateEmail(event);
-  height.onblur = (event) => validateHeight(event);
-  weight.onblur = (event) => validateWeight(event);
+  const emailInput = $("email");
+  const indexMsgEmail = $("msgEmail");
+
+  const heightInput = $("height");
+  const indexMsgHeight = $("msgHeight");
+
+  const weightInput = $("weight");
+  const indexMsgWeight = $("msgWeight");
+
+  fullNameInput.onblur = (event) => validateFullName(event, indexMsgfullName);
+  emailInput.onblur = (event) => validateEmail(event, indexMsgEmail);
+  heightInput.onblur = (event) => validateHeight(event, indexMsgHeight);
+  weightInput.onblur = (event) => validateWeight(event, indexMsgWeight);
 };
