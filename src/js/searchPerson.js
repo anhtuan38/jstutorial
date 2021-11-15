@@ -1,17 +1,19 @@
 const searchPerson = () => {
   const optionSearch = $("optionSearch");
   const textSearchInput = $("textSearchInput");
-  const searchedPerson = [];
-  console.log("a");
+
   let searchValue = optionSearch.value;
-  let searchValue = textSearchInput.value;
+  let searchText = textSearchInput.value;
 
-  console.log(searchValue);
-  console.log(searchValue);
-
-  console.log(searchedPerson);
-  // reload table
-  // $("tableData").remove();
-  // let newTable = createTable(searchedPerson);
-  // $("data").append(newTable);
+  let personSearch = [];
+  personArr.forEach((elemnent) => {
+    if (elemnent[searchValue].indexOf(searchText) !== -1) {
+      personSearch.push(elemnent);
+    }
+  });
+  console.log(personSearch);
+  //reload table
+  $("tableData").remove();
+  let newTable = creatTable(personSearch);
+  $("data").append(newTable);
 };
