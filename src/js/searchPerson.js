@@ -14,6 +14,6 @@ const searchPerson = () => {
   console.log(personSearch);
   //reload table
   $("tableData").remove();
-  let newTable = creatTable(personSearch);
+  let newTable = createTable(personSearch);
   $("data").append(newTable);
 };
