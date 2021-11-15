@@ -73,6 +73,6 @@ const save = (index) => {
 
   // Draw new table with edited element
   $("tableData").remove();
-  const newTable = creatTable(personArr);
+  const newTable = createTable(personArr);
   $("data").append(newTable);
 };
