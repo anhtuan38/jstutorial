@@ -1,18 +1,19 @@
 // function delete Row
 const confirmDelRow = (index) => {
+  // listener Event when click button Yes
+  $("agreeToDel").setAttribute("onclick", `del(${index})`);
+};
 
-  const isDel = confirm("Do you want to delete this row?");
-  if (isDel) {
-    const indexRowDel = $(`row${index}`);
+const del = (index) => {
+  const indexRowDel = $(`row${index}`);
+  // remove element from Array Data
 
-    // remove element from Array Data
-    indexRowDel.remove();
-    personArr.splice(index - 1, 1);
+  indexRowDel.remove();
+  personArr.splice(index - 1, 1);
 
-    // creat New Table
-    // console.log(personArr);
-    $("tableData").remove();
-    const newTb = creatTable(personArr);
-    $("data").append(newTb);
-  }
+  // creat New Table
+
+  $("tableData").remove();
+  const newTb = createTable(personArr);
+  $("data").append(newTb);
 };
