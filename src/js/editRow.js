@@ -1,27 +1,22 @@
-// function delete Row
+//fullname
+const fullNameEdit = $("fullNameEdit");
+const nameEditMsg = $("msgFullNameEdit");
+//age
+const ageEdit = $("ageEdit");
+//email
+const emailEdit = $("emailEdit");
+const emailEditMsg = $("msgEmailEdit");
+// height
+const heightEdit = $("heightEdit");
+const heighEditMsg = $("msgHeightEdit");
+//weight
+const weightEdit = $("weightEdit");
+const weightEditMsg = $("msgWeightEdit");
+// address
+const addressEdit = $("addressEdit");
+
+// function when pressing Edit button
 const editRow = (index) => {
-  //fullname
-  const fullNameEdit = $("fullNameEdit");
-  const nameEditMsg = $("msgFullNameEdit");
-
-  //age
-  const ageEdit = $("ageEdit");
-
-  //email
-  const emailEdit = $("emailEdit");
-  const emailEditMsg = $("msgEmailEdit");
-
-  // height
-  const heightEdit = $("heightEdit");
-  const heighEditMsg = $("msgHeightEdit");
-
-  //weight
-  const weightEdit = $("weightEdit");
-  const weightEditMsg = $("msgWeightEdit");
-
-  // address
-  const addressEdit = $("addressEdit");
-
   if (personArr[index - 1].gender === "male") {
     $("maleEdit").checked = true;
   }
@@ -47,41 +42,56 @@ const editRow = (index) => {
   $("saveBtn").setAttribute("onclick", `save(${index})`);
 };
 
+// Function when pressing Yes button
 const save = (index) => {
-  if (CheckFullName && CheckEmail && CheckHeight && CheckWeight) {
-    const genderEdit = getByName("genderEdit");
-    let gender = "";
-    genderEdit.forEach((element) => {
-      if (element.checked) {
-        gender = element.value;
-      }
-      return gender;
-    });
-    // remove edited element from array
+  const genderEdit = getByName("genderEdit");
+  let gender = "";
+  genderEdit.forEach((element) => {
+    if (element.checked) {
+      gender = element.value;
+    }
+    return gender;
+  });
+  // remove edited element from array
 
-    const personEdit = new Person(
-      fullNameEdit.value,
-      ageEdit.value,
-      emailEdit.value,
-      gender,
-      heightEdit.value,
-      weightEdit.value,
-      addressEdit.value
-    );
+  const personEdit = new Person(
+    fullNameEdit.value,
+    ageEdit.value,
+    emailEdit.value,
+    gender,
+    heightEdit.value,
+    weightEdit.value,
+    addressEdit.value
+  );
 
-    personArr.splice(index - 1, 1, personEdit);
+  personArr.splice(index - 1, 1, personEdit);
 
-    personArr.map((obj) => {
-      obj.BMI = obj.calculateBMI().toFixed(2);
-      obj.health = obj.guessHealth();
-      return obj;
-    });
+  personArr.map((obj) => {
+    obj.BMI = obj.calculateBMI().toFixed(2);
+    obj.health = obj.guessHealth();
+    return obj;
+  });
 
-    // console.log(personEdit);
+  // Draw new table with edited element
+  $("tableData").remove();
+  const newTable = createTable(personArr);
+  $("data").append(newTable);
 
-    // Draw new table with edited element
-    $("tableData").remove();
-    const newTable = createTable(personArr);
-    $("data").append(newTable);
-  }
+  // reset msg
+  nameEditMsg.innerHTML = "";
+  emailEditMsg.innerHTML = "";
+  heighEditMsg.innerHTML = "";
+  weightEditMsg.innerHTML = "";
 };
+
+// listener Event when mouseover
+$("saveBtn").addEventListener("mouseover", () => {
+  if (
+    (CheckFullName || !!fullNameEdit.value) &&
+    (CheckEmail || !!emailEdit.value) &&
+    (CheckHeight || !!heightEdit.value) &&
+    (CheckWeight || !!weightEdit.value)
+  ) {
+    $("saveBtn").setAttribute("data-bs-dismiss", "modal");
+  } else $("saveBtn").removeAttribute("data-bs-dismiss");
+});
