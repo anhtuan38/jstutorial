@@ -1,2 +1,2 @@
 //nameSpace
-let app = app || {};
+let app = {};
