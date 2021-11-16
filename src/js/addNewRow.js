@@ -36,7 +36,7 @@ $("addNewRow").addEventListener("click", () => {
       return obj;
     });
     // deltele old data and draw New Table
-    $("tableData").remove();
+    if ($("tableData")) !$("tableData").remove();
     const newTable = createTable(personArr);
     $("data").append(newTable);
 
