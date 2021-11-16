@@ -1,11 +1,3 @@
-const $ = (id) => {
-  return document.getElementById(id);
-};
-
-const getByName = (element) => {
-  return document.getElementsByName(element);
-};
-
 const headers = [
   "stt",
   "full name",
@@ -106,7 +98,3 @@ const createTable = (array) => {
   table.setAttribute("class", "table table-striped table-hover");
   return table;
 };
-
-// const indexTable = $("tableData");
-const drawTable = createTable(personArr);
-$("data").append(drawTable);
