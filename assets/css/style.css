@@ -1,6 +1,8 @@
 .InputCreatTb p {
   margin-bottom: 0px;
+  margin-right: 0px;
 }
-.InputCreatTb input {
-  width: 75px;
+.InputCreatTb {
+  width: 90%;
+  height: 50px !important;
 }

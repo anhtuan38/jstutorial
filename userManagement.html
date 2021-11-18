@@ -38,10 +38,10 @@
         <section class="mb-5">
             <h1 class="my-3">Data Table</h1>
             <div class="row InputCreatTb">
-                <p class="col-2 d-flex text-center" >Enter the number of people</p>
+                <p class="col-3 d-flex align-items-center" >Enter the number of people</p>
                 <input type="number" id="numberRow" class="col-1">
-                <button class="col-1 mx-2" onclick="creat()">Generate</button>
-                <button class="col-1 mx-2" onclick="empty()">Empty Data</button>
+                <button class="col-1 mx-1 btn btn-primary" onclick="creat()">Generate</button>
+                <button class="col-1 mx-1 btn btn-light" onclick="empty()">Empty Data</button>
                 <div class="col-4" id="msgNumberRowErr"></div>
             </div>
         </section>
@@ -67,7 +67,7 @@
             <div class="form-group row my-3">
                 <label for="age" class="col-sm-2 col-form-label d-flex align-items-center">Age:</label>
                 <div class="col-sm-1">
-                    <input type="number" id="age">
+                    <input type="number" class="form-control" id="age">
                 </div>
             </div>
 
@@ -115,7 +115,7 @@
             <div class="form-group row my-3">
                 <label for="address" class="col-sm-2">Address:</label>
                 <div class="col-sm-5">
-                    <textarea rows="3" cols="66" id="address"></textarea>
+                    <textarea class="form-control" id="address"></textarea>
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
         </form>
 
         <!-- Modal edit button -->
-        <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="Edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -141,29 +141,31 @@
                             <!-- Full name -->
                             <div class="form-group row my-3">
                                 <label class="col-3 col-form-label">Full Name:<span class="text-danger">*</span></label>
-                                <div class="col-sm-5">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" id="fullNameEdit" name="fullNameEdit"
                                         placeholder="Enter your Full Name">
+                                        <div id="msgFullNameEdit"></div>
                                 </div>
-                                <div class="col-sm-4" id="msgFullNameEdit"></div>
+
                             </div>
 
                             <!-- Age -->
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label d-flex align-items-center">Age:</label>
-                                <div class="col-sm-1 w-25">
-                                    <input type="number" id="ageEdit">
+                                <div class="col-3">
+                                    <input type="number" class="form-control" id="ageEdit">
                                 </div>
                             </div>
 
                             <!-- Email -->
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label">Email:<span class="text-danger">*</span></label>
-                                <div class="col-sm-5">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" id="emailEdit" name="emailEdit"
                                         placeholder="Enter your email">
+                                        <div id="msgEmailEdit"></div>
                                 </div>
-                                <div class="col-sm-4" id="msgEmailEdit"></div>
+
                             </div>
 
                             <!-- Gender -->
@@ -183,35 +185,35 @@
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label">Height(Meter):<span
                                         class="text-danger">*</span></label>
-                                <div class="col-sm-7">
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" id="heightEdit" name="heightEdit"
                                         placeholder="a.bc">
+                                    <div id="msgHeightEdit"></div>
                                 </div>
-                                <div class="col-sm-2" id="msgHeightEdit"></div>
                             </div>
 
                             <!-- weight -->
                             <div class="form-group row my-3">
                                 <label class="col-sm-3 col-form-label">Weight(Kg):<span
                                         class="text-danger">*</span></label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="weightEdit" name="weightEdit"
-                                        placeholder="xx.x">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="weightEdit" name="weightEdit">
+                                    <div id="msgWeightEdit"></div>
                                 </div>
-                                <div class="col-sm-2" id="msgWeightEdit"></div>
                             </div>
+
                             <!-- Address -->
                             <div class="form-group row my-3">
                                 <label for="address" class="col-sm-3">Address:</label>
-                                <div class="col-sm-7">
-                                    <textarea rows="2" cols="31" id="addressEdit"></textarea>
+                                <div class="col-8">
+                                    <textarea class="form-control" id="addressEdit"></textarea>
                                 </div>
                             </div>
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="saveBtn">Yes</button>
+                        <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -219,7 +221,7 @@
         </div>
 
         <!-- Modal delete button -->
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

@@ -52,11 +52,13 @@ const createTableBody = (array) => {
     const actionTd = document.createElement("td");
 
     //create button
-    const editBtn = createButton("edit");
+    const editBtn = createButton("Edit");
     editBtn.setAttribute("onclick", `editRow(${index + 1})`);
+    editBtn.setAttribute("class", "btn btn-info mx-2");
 
-    const deleteBtn = createButton("delete");
+    const deleteBtn = createButton("Delete");
     deleteBtn.setAttribute("onclick", `confirmDelRow(${index + 1})`);
+    deleteBtn.setAttribute("class", "btn btn-danger");
 
     //set data for cell
     sttTd.innerHTML = index + 1;
